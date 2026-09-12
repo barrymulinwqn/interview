@@ -1,3 +1,10 @@
+containerLab
+
+NetBrain
+
+Tenable
+
+
 # NetBox Community Setup on a Local Mac mini
 
 This guide installs the NetBox Community Edition source release directly on a local Mac mini using Homebrew-managed PostgreSQL and Redis. It is suitable for learning, development, and a private lab. It deliberately binds NetBox to `127.0.0.1`; do not expose this development deployment to an untrusted network.
@@ -75,12 +82,14 @@ pg_isready
 	printf '%s\n' "$NETBOX_DB_PASSWORD"
 	```
 
-2. Create the `netbox` login role, its database, and schema permission. Run these commands once on a new installation.
+2. Create the `netbox` login role, its database, and schema permission. Run these commands once on a new installation. The quoted SQL heredoc lets `psql` safely expand the password variable.
 
 	```bash
 	psql postgres -v ON_ERROR_STOP=1 \
 	  -v netbox_db_password="$NETBOX_DB_PASSWORD" \
-	  -c "CREATE USER netbox WITH LOGIN PASSWORD :'netbox_db_password';"
+	  <<'SQL'
+CREATE USER netbox WITH LOGIN PASSWORD :'netbox_db_password';
+SQL
 
 	psql postgres -v ON_ERROR_STOP=1 \
 	  -c "CREATE DATABASE netbox OWNER netbox ENCODING 'UTF8';"
@@ -124,7 +133,7 @@ Using a versioned directory and a Git tag makes the installed version explicit a
 
 ```bash
 export NETBOX_VERSION="v4.7.0"
-export NETBOX_HOME="$HOME/src/netbox-${NETBOX_VERSION#v}"
+export NETBOX_HOME="$HOME/Proj_src/netbox-${NETBOX_VERSION}"
 
 mkdir -p "$HOME/src"
 git clone https://github.com/netbox-community/netbox.git "$NETBOX_HOME"
@@ -148,8 +157,8 @@ The final command should show a detached `HEAD` at the selected release tag and 
 2. Generate a distinct `SECRET_KEY` and API-token pepper. Save both outputs temporarily; they are needed in the next edit.
 
 	```bash
-	export NETBOX_SECRET_KEY="$("$PYTHON_BIN" "$NETBOX_HOME/generate_secret_key.py")"
-	export NETBOX_API_TOKEN_PEPPER="$("$PYTHON_BIN" "$NETBOX_HOME/generate_secret_key.py")"
+	export NETBOX_SECRET_KEY="$("$PYTHON_BIN" "$NETBOX_HOME/netbox/generate_secret_key.py")"
+	export NETBOX_API_TOKEN_PEPPER="$("$PYTHON_BIN" "$NETBOX_HOME/netbox/generate_secret_key.py")"
 
 	printf 'SECRET_KEY=%s\nAPI_TOKEN_PEPPER=%s\n' \
 	  "$NETBOX_SECRET_KEY" "$NETBOX_API_TOKEN_PEPPER"
@@ -292,7 +301,7 @@ For larger or production installations, use NetBox's documented Gunicorn and rev
 | --- | --- | --- |
 | `psql: command not found` | `echo "$PATH"` | Re-run the exports in step 1 or add them to `~/.zshrc`. |
 | `pg_isready` is not accepting connections | `brew services list` | Start `postgresql@17`; if the service immediately stops, confirm `initdb` completed for `$PG_DATA`. |
-| NetBox cannot connect to PostgreSQL | `PGPASSWORD='<password>' psql -U netbox -h 127.0.0.1 -d netbox` | Verify the database password and `HOST` in `configuration.py`. |
+| NetBox cannot connect to PostgreSQL | `PGPASSWORD='<password>' psql --username netbox --host 127.0.0.1 --dbname netbox` | Verify the database password and `HOST` in `configuration.py`. |
 | Redis connection error | `redis-cli ping` | Start Redis and retain the local host/port values in `REDIS`. |
 | `DisallowedHost` in the browser | Review `ALLOWED_HOSTS` | Access `127.0.0.1:8000` or add the exact hostname being used. |
 | Background jobs do not complete | Inspect the `rqworker` terminal | Keep `python manage.py rqworker` running and verify Redis returns `PONG`. |
