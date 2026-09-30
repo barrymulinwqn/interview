@@ -18,6 +18,7 @@ Skill fundamentals for a **Revenue Apps / Development & Infrastructure** role in
 | [python-django-web.md](python-django-web.md) | Python OOP/concurrency, Django ORM/views/security, HTML5 APIs, CSS layout, modern JS (ES6+) |
 | [control-m.md](control-m.md) | Architecture, job definitions, dependencies, variables, calendars, EOD batch, Automation API |
 | [openshift.md](openshift.md) | OCP vs K8s, SCCs, Routes, ImageStreams, BuildConfigs, RBAC, Operators, monitoring, `oc` CLI |
+| [kafka-interview-questions.md](kafka-interview-questions.md) | Kafka fundamentals, producers, consumers, delivery semantics, replication, performance, operations, and architecture design |
 
 ---
 
