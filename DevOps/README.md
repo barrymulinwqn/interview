@@ -9,6 +9,7 @@ Skill fundamentals for a **Revenue Apps / Development & Infrastructure** role in
 | File | Topics Covered |
 |------|---------------|
 | [shell-scripting.md](shell-scripting.md) | Bash scripting, variables, loops, functions, arrays, error handling, traps, text processing |
+| [shell-operations-command-reference-zh.md](shell-operations-command-reference-zh.md) | Linux 运维 Shell 命令、输入输出示例、故障排查、服务管理、网络与自动化实战 |
 | [unix-linux.md](unix-linux.md) | Filesystem, process management, memory, networking, systemd, logging, permissions, performance tuning |
 | [ansible.md](ansible.md) | Architecture, playbooks, modules, roles, inventory, Vault, Jinja2 templates, best practices |
 | [docker.md](docker.md) | Images, Dockerfile, containers, networking, volumes, Compose, security, multi-stage builds |
@@ -19,6 +20,7 @@ Skill fundamentals for a **Revenue Apps / Development & Infrastructure** role in
 | [control-m.md](control-m.md) | Architecture, job definitions, dependencies, variables, calendars, EOD batch, Automation API |
 | [openshift.md](openshift.md) | OCP vs K8s, SCCs, Routes, ImageStreams, BuildConfigs, RBAC, Operators, monitoring, `oc` CLI |
 | [kafka-interview-questions.md](kafka-interview-questions.md) | Kafka fundamentals, producers, consumers, delivery semantics, replication, performance, operations, and architecture design |
+| [argocd-高频面试题与生产实战指南.md](argocd-高频面试题与生产实战指南.md) | Argo CD、GitOps、Application/ApplicationSet、发布策略、权限治理、排障与金融级生产案例 |
 
 ---
 
