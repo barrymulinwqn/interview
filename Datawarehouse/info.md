@@ -15,11 +15,15 @@ Data warehouse
 
 
 
+Power BI:
+Row-Level Security (RLS) in Power BI is a feature used to restrict data access for specific users based on their roles. By applying filters at the row level, the same report or dashboard can display different data depending on who is logged in (for example, a regional sales manager sees only their region's data).
+
 
 • Apache Spark is an open-source, distributed, in-memory data processing engine designed for complex big data pipelines, machine learning, and heavy-duty ETL (Extract, Transform, Load) across diverse external storage systems.
 • Snowflake is a fully managed, cloud-native data warehouse and lakehouse platform (SaaS) tailored for high-speed SQL analytics, business intelligence (BI), and relational data storage with zero infrastructure management.
 
 Amazon Redshift is a fully managed, petabyte-scale cloud data warehouse service offered by Amazon Web Services (AWS) that allows organizations to analyze massive datasets using standard SQL and business intelligence (BI) tools
+Amazon Redshift Spectrum is a feature of Amazon Redshift that lets you run SQL queries directly against massive amounts of data stored in Amazon S3 without needing to load or copy that data into your Redshift warehouse tables first.
 
 
 AWS Glue is a fully managed, serverless data integration and ETL (Extract, Transform, Load) service provided by Amazon Web Services (AWS). It helps organizations discover, prepare, move, and integrate data from over 70 to 100+ sources into 
@@ -44,6 +48,8 @@ Founded in 2013 by the original creators of Apache Spark, Databricks is built ar
 Tableau is a market-leading visual analytics and business intelligence platform acquired by Salesforce in 2019. It transforms raw, complex data into interactive, easy-to-understand charts, graphs, maps, and dashboards without requiring heavy coding or SQL
 
 
+
+Change Data Capture (CDC) raw data typically refers to the untransformed, append-only stream or batch of change events (such as inserts, updates, and deletes) emitted directly from a source database's transaction or write-ahead log (WAL, binlog, or redo log)
 
 
 项目简介
